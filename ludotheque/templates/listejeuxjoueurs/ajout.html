@@ -1,0 +1,19 @@
+<!DOCTYPE html>
+<html lang="en">
+{% load static %}
+<head>
+    <meta charset="UTF-8">
+    <title>Ajouter une liste</title>
+</head>
+<body>
+
+    {% if id is not None %}
+        <form method="post" action="/updatetraitement_listejeuxjoueurs/{{id}}/">
+    {% elif id_j is not None %}
+        <form method="post" action="/traitement_listejeuxjoueurs/{{id_j}}/">
+    {% endif %}
+    {% csrf_token %}
+    {{form.as_ul}}
+    <input type="submit" value="Envoyez les informations"/>
+</body>
+</html>

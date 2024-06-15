@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="en">
+{% load static %}
+<head>
+    <meta charset="UTF-8">
+    <title>Ajouter un joueur</title>
+    <link rel="stylesheet" type="text/css" href="{% static 'main.css' %}"/>
+</head>
+<body>
+{% include 'main_nav.html' %}
+<div class="containerSecond">
+    <h1 class="mainTitle">Ajouter un joueur</h1>
+
+    {% if id is not None %}
+        <form class="playerForm" method="post" action="/updatetraitement_joueurs/{{id}}/">
+    {% else %}
+        <form class="playerForm" method="post" action="/traitement_joueurs/">
+    {% endif %}
+        {% csrf_token %}
+        {{ form.as_ul }}
+        <input class="submitButton" type="submit" value="Envoyez les informations"/>
+    </form>
+</div>
+{% include 'main_footer.html' %}
+</body>
+</html>

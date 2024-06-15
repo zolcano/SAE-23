@@ -1,0 +1,17 @@
+[Unit]
+Description=gunicorn daemon
+Requires=gunicorn.socket
+After=network.target
+
+[Service]
+User=evan
+Group=www-data
+WorkingDirectory=/myprojectsaedir
+ExecStart=/myprojectsaedir/myenv/bin/gunicorn \
+          --access-logfile - \
+          --workers 3 \
+          --bind unix:/run/gunicorn.sock \
+          SAE.wsgi:application
+
+[Install]
+WantedBy=multi-user.target

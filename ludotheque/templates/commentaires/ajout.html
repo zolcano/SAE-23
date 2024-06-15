@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="en">
+{% load static %}
+<head>
+    <meta charset="UTF-8">
+    <title>Ajouter un commentaire</title>
+    <link rel="stylesheet" type="text/css" href="{% static 'main.css' %}"/>
+</head>
+<body>
+{% include 'main_nav.html' %}
+<div class="containerSecond">
+    <h1 class="mainTitle">Ajouter un commentaire</h1>
+
+    {% if id is not None %}
+        <form class="playerForm" method="post" action="/updatetraitement_commentaires/{{id}}/">
+    {% else %}
+        <form class="playerForm" method="post" action="/traitement_commentaires/">
+    {% endif %}
+        {% csrf_token %}
+        {{ form.as_ul }}
+        <input class="submitButton" type="submit" value="Envoyez les informations"/>
+    </form>
+</div>
+{% include 'main_footer.html' %}
+</body>
+</html>

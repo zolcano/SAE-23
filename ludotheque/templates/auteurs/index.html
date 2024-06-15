@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+{% load static %}
+<head>
+    <meta charset="UTF-8">
+    <title>Liste des auteurs</title>
+    <link rel="stylesheet" type="text/css" href="{% static 'main.css' %}"/>
+</head>
+<body>
+{% include 'main_nav.html' %}
+
+<div class="containerSecond">
+    <h1 class="mainTitle">Liste des auteurs</h1>
+    <a class="addButton" href="/ajout_auteurs/">Ajouter un auteur</a>
+    <article class="playerList">
+        {% for a in liste %}
+            <li class="playerItem">
+                <p class="playerName">{{ a }}</p>
+                <div class="authorActions">
+                    <a class="edit" href="/affiche_auteurs/{{a.id}}/">Afficher les informations</a> |
+                    <a class="edit" href="/update_auteurs/{{a.id}}/">Mettre à jour</a> |
+                    <a class="edit" href="/delete_auteurs/{{a.id}}/">Supprimer</a>
+                </div>
+            </li>
+        {% endfor %}
+    </article>
+
+    <a class="backButton" href="/">Retour</a>.
+{% include 'main_footer.html' %}
+</div>
+
+</body>
+</html>

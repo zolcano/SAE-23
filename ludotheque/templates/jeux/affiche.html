@@ -1,0 +1,118 @@
+<!DOCTYPE html>
+<html lang="en">
+{% load static %}
+<head>
+    <meta charset="UTF-8">
+    <title>{{ jeux.titre }}</title>
+    <link rel="stylesheet" type="text/css" href="{% static 'main.css' %}"/>
+</head>
+<body>
+{% include 'main_nav.html' %}
+
+<div class="container">
+    {% if jeux.photo %}
+        <img src="{{ jeux.photo.url }}" class="imgAffiche">
+    {% else %}
+        <p>No image available</p>
+    {% endif %}
+    <div class="text">
+        <h1 class="nomJeu">{{ jeux.titre }}</h1>
+        <p class="auteur">{{ jeux.auteur.prenom }}</p>
+        <p class="datexedit">{{ jeux.editeur }}</p>
+    </div>
+
+    <p class="dateAffiche"> {{ jeux.anneeSortie }} </p>
+</div>
+
+<div class="infoAffiche">
+    <p> Nombre de joueurs: {{nombre_joueurs}}</p>
+    <p> Nombre de commentaires: {{ nbCommentaires }}</p>
+    <p> Note moyenne (Particulier) : {{ averageRatingParticulier|floatformat:1 }} / 10</p>
+    <p> Note moyenne (Professionnel) : {{ averageRatingPro|floatformat:1 }} / 10</p>
+</div>
+
+<article class="BPCommentaires">
+    <article class="bestCommentaires">
+        <div class="header">
+            <p>Meilleur commentaire :</p>
+        </div>
+        {% if bestCommentaire %}
+            <div class="content">
+                {% if bestCommentaire.joueurs.type == 'professionnel' %}
+                    <p class="joueurCommentaires">{{ bestCommentaire.joueurs.nom }} {{ commentaire.joueurs.prenom }} (Professionnel):</p>
+                {% else %}
+                    <p class="joueurCommentaires">{{ bestCommentaire.joueurs.nom }} {{ commentaire.joueurs.prenom }} (Particulier):</p>
+                {% endif %}
+                <p>{{ bestCommentaire.commentaire }}</p>
+                <p class="noteCommentaires">{{ bestCommentaire.note }} / 10</p>
+            </div>
+        {% else %}
+            <p>Pas de commentaire disponible</p>
+        {% endif %}
+    </article>
+    <article class="pireCommentaires">
+        <div class="header">
+            <p>Pire commentaire :</p>
+        </div>
+        {% if pireCommentaire %}
+            <div class="content">
+                {% if pireCommentaire.joueurs.type == 'professionnel' %}
+                    <p class="joueurCommentaires">{{ pireCommentaire.joueurs.nom }} {{ commentaire.joueurs.prenom }} (Professionnel) :</p>
+                {% else %}
+                    <p class="joueurCommentaires">{{ pireCommentaire.joueurs.nom }} {{ commentaire.joueurs.prenom }} (Particulier) :</p>
+                {% endif %}
+                <p>{{ pireCommentaire.commentaire }}</p>
+                <p class="noteCommentaires">{{ pireCommentaire.note }} / 10</p>
+            </div>
+        {% else %}
+            <p>Pas de commentaire disponible</p>
+        {% endif %}
+    </article>
+</article>
+
+<div class="listeCommentaires">
+    {% for commentaire in listeCommentaires %}
+        <article class="commentaire">
+            {% if commentaire.joueurs.type == 'professionnel' %}
+                <p class="joueurCommentaires">{{ commentaire.joueurs.nom }} {{ commentaire.joueurs.prenom }} (Professionnel) :</p>
+            {% else %}
+                <p class="joueurCommentaires">{{ commentaire.joueurs.nom }} {{ commentaire.joueurs.prenom }} (Particulier) :</p>
+            {% endif %}
+            <p class="commentairesCommentaires">{{ commentaire.commentaire }}</p>
+            <p class="noteCommentaires">{{ commentaire.note }} / 10</p>
+            <p class="dateCommentaires"> {{ commentaire.date }}</p>
+            <a href="../../update_commentaires/{{ commentaire.id }}/"> Editer </a>
+            <a href="../../delete_commentaires/{{ commentaire.id }}/"> Supprimer </a>
+        </article>
+    {% endfor %}
+</div>
+
+<a class="addButton" href="/ajout_commentaires/"> Ajouter un commentaire </a>
+
+<div class="infoEdit">
+    <a href="/update_jeux/{{jeux.id}}/">Mettre à jour</a>
+    <a href="/delete_jeux/{{jeux.id}}/">Supprimer</a>
+
+</div>
+
+<a class="addButton" href="/ajout_listejeuxjoueurs/{{jeux.id}}"> Affecter un jouer à {{ jeux.titre }} </a>
+
+<article class="playerTry">
+    <h3>Liste des joueurs possédant le jeu</h3>
+        <ul>
+        {% for jeuxjoueurs in liste %}
+            <li class="commentItem">
+                <p> {{ jeuxjoueurs.joueurs.nom }} {{ jeuxjoueurs.joueurs.prenom }}</p>
+                <a href="/affiche_joueurs/{{jeuxjoueurs.joueurs.id}}/"> Afficher </a>
+                <a href="/delete_listejeuxjoueurs/{{jeuxjoueurs.id}}/{{jeux.id}}/"> Supprimer </a>
+            </li>
+        {% empty %}
+            <p>Personne ne possède ce jeu pour le moment.</p>
+        {% endfor %}
+        </ul>
+    </article>
+
+{% include 'main_footer.html' %}
+
+</body>
+</html>

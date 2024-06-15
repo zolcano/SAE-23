@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html lang="en">
+{% load static %}
+<head>
+    <meta charset="UTF-8">
+    <title>Majin | Liste des jeux</title>
+    <link rel="stylesheet" type="text/css" href="{% static 'main.css' %}"/>
+</head>
+<body>
+{% include 'main_nav.html' %}
+<a href="/ajout_jeux/"> Ajouter un jeu </a>
+<h1 class="mainTitle"> Liste des jeux </h1>
+<article class="listeJeuxAll">
+    {% for j in liste %}
+        <article class="listeJeux">
+            <p class="liste"> {{j}} </p>
+            <p class="listeEdit"><a class="editListe" href="/affiche_jeux/{{j.id}}/">Afficher les informations</a>  |  <a class="editListe" href="/update_jeux/{{j.id}}/">Mettre à jour</a>  |  <a class="editListe" href="/delete_jeux/{{j.id}}/">Supprimer</a></p>
+        </article>
+    {% endfor %}
+</article>
+<a href="/ajout_jeux/"> Ajouter un jeu </a>
+{% include 'main_footer.html' %}
+</body>
+</html>

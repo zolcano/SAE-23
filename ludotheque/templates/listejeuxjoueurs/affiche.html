@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Liste des Jeux et Joueurs</title>
+</head>
+<body>
+    <h1>Liste des Jeux et Joueurs</h1>
+    <ul>
+        {% for liste in listejeuxjoueurs %}
+            <li>
+                <h2>Jeux:</h2>
+                <ul>
+                    {% for jeu in liste.jeux.all %}
+                        <li>{{ jeu.titre }} ({{ jeu.anneeSortie }})</li>
+                    {% endfor %}
+                </ul>
+                <h2>Joueurs:</h2>
+                <ul>
+                    {% for joueur in liste.joueurs.all %}
+                        <li>{{ joueur.nom }} {{ joueur.prenom }}</li>
+                    {% endfor %}
+                </ul>
+            </li>
+        {% endfor %}
+    </ul>
+</body>
+</html>
