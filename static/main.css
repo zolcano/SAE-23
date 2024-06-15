@@ -1,0 +1,476 @@
+* {
+    text-decoration: none;
+    box-sizing: border-box;
+}
+
+body {
+    padding: 0;
+    margin: 0;
+}
+
+nav {
+    position: fixed;
+    top: 0;
+    width: 100%;
+    text-align: center;
+    background-color: rgb(56, 134, 140);
+    padding: 10px;
+    margin: 0;
+    display: flex;
+    justify-content: space-around;
+    z-index: 1000;
+}
+
+nav a {
+    color: white;
+    font-size: 15px;
+}
+
+nav a:hover {
+    font-weight: bold;
+}
+
+.houseN {
+    width: 20px;
+    border-radius: 100%;
+}
+
+.imgAffiche {
+    width: 25%;
+    height: auto;
+    border-radius: 10px;
+    margin: 6% 0 6% 6%;
+}
+
+.container {
+    display: flex;
+    align-items: center;
+    padding: 10px;
+}
+
+.text h1, .text p {
+    margin: 0;
+}
+
+.nomJeu {
+    font-size: 50px;
+}
+
+.auteur {
+    color: grey;
+}
+
+.datexedit {
+    font-size: 20px;
+}
+
+.text {
+    margin-left: 6%;
+    margin-top: 10px;
+}
+
+.dateAffiche {
+    margin-left: 40%;
+    margin-top: 10px;
+    font-size: 25px;
+}
+
+.infoAffiche {
+    width: 80%;
+    text-align: center;
+    padding: 10px;
+    display: flex;
+    justify-content: space-around;
+    border-style: solid;
+    margin-left: 10%;
+    margin-right: 10%;
+    border-radius: 10px;
+    background-color: rgb(56, 134, 140, 0.5);
+}
+
+.mainTitle {
+    margin-top: 6%;
+    text-align: center;
+    font-size: 60px;
+}
+
+.allJeux {
+    background-color: rgb(56, 134, 140, 0.3);
+    margin-left: 2%;
+    margin-right: 2%;
+    padding: 20px;
+}
+
+.jeux-container {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 20px;
+    justify-content: center;
+}
+
+.imgMain {
+    height: 100px;
+    width: 100%;
+    object-fit: contain;
+}
+
+.mainJeux {
+    border-radius: 10px;
+    padding: 0;
+    margin: 10px;
+    background-color: transparent;
+}
+
+.card-link {
+    text-decoration: none;
+    color: inherit;
+    display: block;
+}
+
+.card {
+    width: 200px;
+    border: 2px solid black;
+    border-radius: 10px;
+    overflow: hidden;
+    text-align: center;
+    font-family: Arial, sans-serif;
+    transition: transform 0.3s;
+}
+
+.card .top {
+    height: 100px;
+    overflow: hidden;
+}
+
+.card .bottom {
+    padding: 20px;
+}
+
+.card .nameCardMain {
+    color: black;
+    font-size: 25px;
+    margin-bottom: 0;
+    margin-top: 10px;
+}
+
+.card .categorycardMain {
+    color: rgb(86, 80, 80, 0.8);
+    font-size: 12px;
+    margin: 0;
+}
+
+.card .line {
+    width: 50px;
+    height: 2px;
+    background-color: black;
+    margin: 10px auto;
+}
+
+.card .year {
+    color: black;
+    font-size: 16px;
+    margin-top: 20px;
+}
+
+.card:hover {
+    transform: scale(1.05);
+    cursor: pointer;
+}
+
+.listeCommentaires {
+    border: 0px solid;
+    margin-left: 5px;
+    margin-right: 5px;
+    border-radius: 10px;
+    background-color: rgb(56, 134, 140, 0.3);
+    padding: 2%;
+}
+
+.commentaire {
+    border: 2px solid black;
+    padding: 10px;
+    border-radius: 10px;
+    width: 90%; /* Use 90% of the parent container's width */
+    margin: 0 auto; /* Center the comment box */
+    background-color: white;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+}
+
+.commentaire p {
+    margin: 0;
+}
+
+.header, .footer {
+    display: flex;
+    justify-content: space-between;
+}
+
+.joueurCommentaires {
+    font-weight: bold;
+}
+
+.noteCommentaires {
+    text-align: right;
+}
+
+/* New styles for best and worst comments */
+.BPCommentaires {
+    display: flex;
+    justify-content: space-between;
+    margin: 20px 10%;
+}
+
+.bestCommentaires, .pireCommentaires {
+    border: 2px solid black;
+    border-radius: 10px;
+    padding: 10px;
+    background-color: rgba(56, 134, 140, 0.3);
+    width: 45%; /* Adjust width to fit side by side */
+}
+
+.bestCommentaires p, .pireCommentaires p {
+    margin: 5px 0;
+}
+
+.bestCommentaires .header, .pireCommentaires .header {
+    display: flex;
+    justify-content: space-between;
+}
+
+.bestCommentaires .footer, .pireCommentaires .footer {
+    display: flex;
+    justify-content: space-between;
+}
+
+.bestCommentaires .joueurCommentaires, .pireCommentaires .joueurCommentaires {
+    font-weight: bold;
+}
+
+.bestCommentaires .noteCommentaires, .pireCommentaires .noteCommentaires {
+    text-align: right;
+}
+
+.liste, .listeEdit {
+    text-align: center;
+}
+
+.liste {
+    font-size: 25px;
+}
+
+.listeJeuxAll {
+    margin-top: 8%;
+}
+
+.infoEdit {
+    width: 100%;
+    text-align: center;
+    padding: 8px;
+    display: flex;
+    justify-content: space-around;
+    border: 2px solid;
+    background-color: rgb(56, 134, 140, 0.5);
+}
+
+.mainTitle {
+    margin-top: 6%;
+    text-align: center;
+    font-size: 60px;
+}
+
+.containerSecond {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding: 10px;
+}
+
+.addButton, .backButton {
+    margin: 20px;
+    padding: 10px 20px;
+    background-color: rgb(56, 134, 140);
+    color: white;
+    border: none;
+    border-radius: 10px;
+    text-decoration: none;
+    font-size: 18px;
+    transition: background-color 0.3s;
+}
+
+.addButton:hover, .backButton:hover {
+    background-color: rgb(40, 100, 104);
+}
+
+.playerList {
+    width: 80%;
+    background-color: rgba(56, 134, 140, 0.3);
+    border-radius: 10px;
+    padding: 20px;
+}
+
+.playerItem {
+    border: 2px solid black;
+    padding: 10px;
+    border-radius: 10px;
+    background-color: white;
+    margin: 10px 0;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.playerName {
+    font-size: 18px;
+    font-weight: bold;
+}
+
+.playerActions a {
+    text-decoration: none;
+    color: rgb(56, 134, 140);
+    font-size: 16px;
+}
+
+.playerActions a:hover {
+    font-weight: bold;
+}
+
+.playerInfo, .playerComments {
+    width: 80%;
+    background-color: rgba(56, 134, 140, 0.3);
+    border-radius: 10px;
+    padding: 20px;
+    margin: 20px 0;
+}
+
+.playerInfo h2, .playerComments h2 {
+    text-align: center;
+    font-size: 30px;
+    margin-bottom: 20px;
+}
+
+.playerInfo p, .playerComments p {
+    font-size: 18px;
+    margin: 10px 0;
+}
+
+.commentItem {
+    border: 2px solid black;
+    padding: 10px;
+    border-radius: 10px;
+    background-color: white;
+    margin: 10px 0;
+}
+
+.playerForm {
+    width: 80%;
+    background-color: rgba(56, 134, 140, 0.3);
+    border-radius: 10px;
+    padding: 20px;
+    margin: 20px 0;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.playerForm ul {
+    list-style-type: none;
+    padding: 0;
+}
+
+.playerForm li {
+    margin: 10px 0;
+}
+
+.submitButton {
+    margin-top: 20px;
+    padding: 10px 20px;
+    background-color: rgb(56, 134, 140);
+    color: white;
+    border: none;
+    border-radius: 10px;
+    font-size: 18px;
+    transition: background-color 0.3s;
+}
+
+.submitButton:hover {
+    background-color: rgb(40, 100, 104);
+}
+
+.categoryList {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 20px;
+    width: 80%;
+    background-color: rgba(56, 134, 140, 0.3);
+    border-radius: 10px;
+    padding: 20px;
+}
+
+.categoryItem {
+    border: 2px solid black;
+    padding: 10px;
+    border-radius: 10px;
+    background-color: white;
+    text-align: center;
+    font-size: 14px; /* Smaller font size */
+}
+
+.categoryName {
+    font-size: 20px;
+    font-weight: bold;
+}
+
+.categoryDesc{
+    font-size: 12px;
+    margin-top: -10px;
+}
+
+.categoryActions a {
+    text-decoration: none;
+    color: rgb(56, 134, 140);
+    font-size: 14px; /* Smaller font size */
+}
+
+.categoryActions a:hover {
+    font-weight: bold;
+}
+
+.imgAffiche {
+    width: 15%;
+    height: auto;
+    border-radius: 10px;
+    margin: 6% 0 6% 6%;
+}
+
+
+footer {
+    display: flex;
+    flex-direction: column;
+    background-color: rgb(56, 134, 140, 0.5);
+    padding: 20px;
+    text-align: center;
+    font-family: Arial, sans-serif;
+    color: #fff;
+    bottom: 0;
+    width: 99.9%;
+    font-size: 10px;
+    margin-top: 30px;
+}
+
+h3{
+    text-align: center;
+}
+
+.playerTry {
+    width: 80%;
+    background-color: rgba(56, 134, 140, 0.3);
+    border-radius: 10px;
+    padding: 20px;
+    margin-left: 10%;
+    text-align: center;
+    font-size: 18px;
+}
+
+
